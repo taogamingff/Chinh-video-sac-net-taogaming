@@ -1,420 +1,209 @@
-
 <!DOCTYPE html>
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#080c18">
 <title>Vision 4K Studio</title>
-
 <style>
-* { box-sizing: border-box; }
-
-body {
-  margin: 0;
-  min-height: 100vh;
-  font-family: Inter, Arial, sans-serif;
-  color: #f8fafc;
-  background:
-    radial-gradient(ellipse at 15% 10%, #312e8155, transparent 40%),
-    radial-gradient(ellipse at 90% 85%, #07598555, transparent 40%),
-    #070b16;
-}
-
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 24px 7%;
-  border-bottom: 1px solid #ffffff12;
-}
-
-.logo {
-  font-size: 22px;
-  font-weight: 800;
-  letter-spacing: -1px;
-}
-
-.logo span { color: #818cf8; }
-
-.badge {
-  color: #a5b4fc;
-  border: 1px solid #6366f155;
-  padding: 8px 13px;
-  border-radius: 30px;
-  font-size: 12px;
-}
-
-main {
-  width: min(900px, 92%);
-  margin: 65px auto;
-}
-
-.hero { text-align: center; margin-bottom: 35px; }
-
-.hero h1 {
-  font-size: clamp(34px, 6vw, 58px);
-  line-height: 1.1;
-  margin: 15px 0;
-  letter-spacing: -2px;
-}
-
-.gradient {
-  background: linear-gradient(90deg, #818cf8, #38bdf8);
-  color: transparent;
-  background-clip: text;
-}
-
-.hero p { color: #94a3b8; line-height: 1.8; }
-
-.panel {
-  background: #101729dd;
-  border: 1px solid #ffffff16;
-  border-radius: 24px;
-  padding: 26px;
-  box-shadow: 0 25px 90px #00000040;
-}
-
-.dropzone {
-  min-height: 230px;
-  border: 1.5px dashed #6366f188;
-  border-radius: 18px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 24px;
-  text-align: center;
-  cursor: pointer;
-  background: #818cf808;
-  transition: .2s;
-}
-
-.dropzone:hover, .dropzone.drag {
-  background: #6366f122;
-  border-color: #818cf8;
-}
-
-.upload-icon { font-size: 43px; margin-bottom: 12px; }
-
-.dropzone p { color: #94a3b8; font-size: 13px; }
-
-button {
-  border: 0;
-  cursor: pointer;
-  font-size: 15px;
-  font-weight: 700;
-  border-radius: 12px;
-  padding: 15px 22px;
-  transition: .2s;
-}
-
-button:hover { transform: translateY(-2px); }
-button:disabled { opacity: .5; cursor: not-allowed; transform: none; }
-
-.secondary {
-  color: #e2e8f0;
-  background: #1e293b;
-  border: 1px solid #ffffff18;
-}
-
-.primary {
-  width: 100%;
-  margin-top: 18px;
-  color: white;
-  background: linear-gradient(100deg, #6366f1, #0284c7);
-  box-shadow: 0 8px 30px #4f46e533;
-}
-
-#preview {
-  display: none;
-  width: 100%;
-  max-height: 390px;
-  margin-top: 20px;
-  background: #000;
-  border-radius: 14px;
-}
-
-.fileinfo {
-  display: none;
-  justify-content: space-between;
-  gap: 12px;
-  align-items: center;
-  margin-top: 16px;
-  padding: 14px;
-  background: #ffffff08;
-  border-radius: 12px;
-  overflow-wrap: anywhere;
-}
-
-.fileinfo small { color: #94a3b8; }
-
-.status {
-  margin-top: 18px;
-  font-size: 13px;
-  color: #a5b4fc;
-  text-align: center;
-  white-space: pre-wrap;
-}
-
-.progress {
-  height: 5px;
-  background: #263248;
-  border-radius: 10px;
-  overflow: hidden;
-  margin-top: 12px;
-}
-
-#bar {
-  height: 100%;
-  width: 0%;
-  background: linear-gradient(90deg, #818cf8, #38bdf8);
-  transition: width .3s;
-}
-
-.features {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 14px;
-  margin-top: 24px;
-}
-
-.feature {
-  padding: 18px 10px;
-  text-align: center;
-  background: #ffffff06;
-  border: 1px solid #ffffff0d;
-  border-radius: 15px;
-}
-
-.feature strong { display: block; margin: 8px 0; }
-.feature small { color: #94a3b8; font-size: 12px; }
-
-footer {
-  text-align: center;
-  color: #64748b;
-  padding: 25px;
-  font-size: 12px;
-}
-
-@media(max-width:600px) {
-  main { margin: 35px auto; }
-  .panel { padding: 15px; }
-  .features { grid-template-columns: 1fr; }
-  header { padding: 20px 5%; }
-}
+:root{color-scheme:dark;--muted:#9aa8bd;--line:#ffffff18;--purple:#818cf8;--blue:#38bdf8}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#f8fafc;background:radial-gradient(ellipse at 12% 8%,#4338ca44,transparent 38%),radial-gradient(ellipse at 90% 80%,#0369a144,transparent 38%),#070b16}
+header{display:flex;align-items:center;justify-content:space-between;padding:18px max(4%,calc((100% - 1050px)/2));border-bottom:1px solid var(--line);gap:12px}
+.logo{font-size:21px;font-weight:850;letter-spacing:-1px;white-space:nowrap}.logo span{color:var(--purple)}
+.pill{font-size:10px;letter-spacing:.8px;color:#c7d2fe;border:1px solid #818cf855;border-radius:30px;padding:8px 10px}
+main{width:min(860px,92%);margin:clamp(28px,7vw,58px) auto}
+.hero{text-align:center;margin-bottom:28px}.hero h1{font-size:clamp(34px,7vw,60px);line-height:1.07;letter-spacing:-2px;margin:16px 0}
+.gradient{background:linear-gradient(90deg,#a5b4fc,#38bdf8);color:transparent;background-clip:text}
+.hero p{color:var(--muted);line-height:1.7;font-size:14px}
+.panel{padding:clamp(14px,4vw,28px);background:#101729ed;border:1px solid var(--line);border-radius:clamp(16px,4vw,24px);box-shadow:0 25px 90px #0005}
+.dropzone{min-height:200px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:22px 14px;border:1.5px dashed #818cf877;border-radius:17px;background:#818cf808;transition:.2s}
+.dropzone.drag,.dropzone:hover{border-color:var(--purple);background:#818cf818}
+.uploadicon{font-size:40px;margin-bottom:10px;color:#a5b4fc}
+.hint{font-size:12px;color:var(--muted);line-height:1.6}
+button{font:inherit;font-weight:750;border:0;border-radius:12px;padding:13px 17px;cursor:pointer;touch-action:manipulation;transition:transform .2s}
+button:active{transform:scale(.99)}button:disabled{opacity:.45;cursor:not-allowed}
+.secondary{background:#202b40;color:#e2e8f0;border:1px solid var(--line)}
+.primary{width:100%;min-height:50px;margin-top:17px;color:white;background:linear-gradient(100deg,#6366f1,#0284c7);box-shadow:0 8px 30px #4f46e533}
+#preview{display:none;width:100%;max-height:390px;object-fit:contain;background:#020617;border-radius:13px;margin-top:16px}
+.fileinfo{display:none;justify-content:space-between;align-items:center;gap:10px;margin-top:14px;padding:12px;background:#ffffff08;border-radius:12px;overflow-wrap:anywhere}
+.fileinfo .filename{font-size:13px;overflow-wrap:anywhere}.fileinfo small,.muted{color:var(--muted);font-size:12px}
+.details{display:none;grid-template-columns:1fr 1fr;gap:9px;margin-top:12px}
+.detail{background:#ffffff08;padding:12px;border-radius:11px;font-size:11px;color:var(--muted);min-width:0}
+.detail strong{display:block;color:#e2e8f0;margin-top:5px;font-size:13px;overflow-wrap:anywhere}
+.progress{height:6px;background:#273248;border-radius:9px;overflow:hidden;margin-top:16px}
+#bar{height:100%;width:0;background:linear-gradient(90deg,#818cf8,#38bdf8);transition:width .25s}
+.status{text-align:center;color:#c7d2fe;font-size:12px;white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.6;margin-top:12px;min-height:20px}
+.features{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:20px}
+.feature{text-align:center;padding:14px 7px;background:#ffffff06;border:1px solid #ffffff0d;border-radius:13px;min-width:0}
+.feature .ico{font-size:22px;color:#a5b4fc}.feature strong{display:block;margin:7px 0;font-size:13px}.feature small{color:var(--muted);font-size:11px;line-height:1.4}
+.api-note{font-size:11px;color:#8291a8;line-height:1.6;text-align:center;margin:14px 0 0}
+footer{text-align:center;color:#64748b;padding:24px 12px;font-size:11px}
+@media(max-width:430px){header{padding:15px 4%}.logo{font-size:19px}.pill{font-size:9px;padding:7px 8px}.hero h1{letter-spacing:-1.2px}.hero p{font-size:13px}.features{gap:7px}.feature{padding:12px 4px}.feature small{font-size:10px}.fileinfo{align-items:flex-start}.fileinfo button{padding:10px 12px}}
 </style>
 </head>
-
 <body>
-<header>
-  <div class="logo">VISION<span>4K.</span></div>
-  <div class="badge">✦ VIDEO ENHANCER</div>
-</header>
-
+<header><div class="logo">VISION<span>4K.</span></div><div class="pill">MOBILE VIDEO STUDIO</div></header>
 <main>
-  <section class="hero">
-    <div class="badge">NEXT-GEN VIDEO STUDIO</div>
-    <h1>Nâng cấp video<br><span class="gradient">lên chuẩn 4K</span></h1>
-    <p>Tăng độ phân giải, làm sắc nét hình ảnh.<br>
-    Biến video của bạn thành phiên bản chất lượng cao hơn.</p>
-  </section>
-
-  <section class="panel">
-    <div class="dropzone" id="dropzone">
-      <div class="upload-icon">⇧</div>
-      <strong>Chèn video của bạn</strong>
-      <p>Kéo thả video vào đây hoặc nhấn nút bên dưới</p>
-      <button class="secondary" id="chooseBtn" type="button">
-        + Chọn video
-      </button>
-      <input id="fileInput" type="file"
-        accept="video/mp4,video/quicktime,video/x-matroska,video/webm,video/x-msvideo"
-        hidden>
-    </div>
-
-    <div class="fileinfo" id="fileinfo">
-      <div>
-        <strong id="filename">Video</strong><br>
-        <small id="filesize"></small>
-      </div>
-      <button class="secondary" id="removeBtn" type="button">
-        Xóa
-      </button>
-    </div>
-
-    <video id="preview" controls playsinline></video>
-
-    <button class="primary" id="processBtn" disabled>
-      ✦ NÂNG CẤP VIDEO LÊN 4K
-    </button>
-
-    <div class="progress"><div id="bar"></div></div>
-    <div class="status" id="status">Sẵn sàng xử lý video của bạn</div>
-
-    <div class="features">
-      <div class="feature">
-        <div>◈</div>
-        <strong>Ultra HD</strong>
-        <small>Độ phân giải 3840 × 2160</small>
-      </div>
-      <div class="feature">
-        <div>✧</div>
-        <strong>Sharpen</strong>
-        <small>Tăng độ sắc nét hình ảnh</small>
-      </div>
-      <div class="feature">
-        <div>⚡</div>
-        <strong>Fast Engine</strong>
-        <small>Tối ưu tốc độ xử lý</small>
-      </div>
-    </div>
-  </section>
+<section class="hero">
+  <div class="pill">AUTO FRAME DETECTION</div>
+  <h1>Nâng cấp video<br><span class="gradient">lên chuẩn 4K</span></h1>
+  <p>Tự nhận diện khung hình ngang, dọc hoặc vuông.<br>Tối ưu độ phân giải và độ sắc nét ngay trên quy trình xử lý.</p>
+</section>
+<section class="panel">
+  <div class="dropzone" id="dropzone">
+    <div class="uploadicon">⇧</div><strong>Chèn video của bạn</strong>
+    <p class="hint">Chọn video từ thư viện điện thoại hoặc máy tính</p>
+    <button class="secondary" id="chooseBtn" type="button">＋ Chọn video</button>
+    <input id="fileInput" type="file" accept="video/*,.mkv,.avi" hidden>
+  </div>
+  <div class="fileinfo" id="fileinfo">
+    <div style="min-width:0"><div class="filename" id="filename"></div><small id="filesize"></small></div>
+    <button class="secondary" id="removeBtn" type="button">Xóa</button>
+  </div>
+  <video id="preview" controls playsinline preload="metadata"></video>
+  <div class="details" id="details">
+    <div class="detail">KHUNG HÌNH GỐC<strong id="originalSize">Đang đọc...</strong></div>
+    <div class="detail">ĐẦU RA DỰ KIẾN<strong id="targetSize">Tự nhận diện</strong></div>
+  </div>
+  <button class="primary" id="processBtn" disabled>✦ NÂNG CẤP VIDEO LÊN 4K</button>
+  <div class="progress"><div id="bar"></div></div>
+  <div class="status" id="status" role="status" aria-live="polite">Chọn video để bắt đầu.</div>
+  <div class="features">
+    <div class="feature"><div class="ico">◈</div><strong>Tự nhận diện</strong><small>Ngang / dọc / vuông</small></div>
+    <div class="feature"><div class="ico">✧</div><strong>Tăng độ nét</strong><small>Bộ lọc sharpen</small></div>
+    <div class="feature"><div class="ico">⚡</div><strong>Tiến trình thật</strong><small>Theo dõi từ API</small></div>
+  </div>
+  <p class="api-note">Chất lượng và tốc độ phụ thuộc video gốc cùng cấu hình máy chủ. Bản này upscale và tăng nét bằng FFmpeg, không phải AI phục hồi chi tiết.</p>
+</section>
 </main>
-
-<footer>VISION 4K STUDIO · VIDEO ENHANCEMENT</footer>
-
+<footer>VISION 4K STUDIO</footer>
 <script>
-const API_URL = "http://127.0.0.1:8000/api/enhance-4k";
+/*
+  QUAN TRỌNG:
+  Sau khi deploy API, thay API_BASE bằng URL HTTPS của API,
+  ví dụ: https://ten-api-cua-ban.onrender.com
+  Không thêm dấu / ở cuối.
+*/
+const API_BASE = "https://YOUR-API-SERVICE.onrender.com";
+const $ = id => document.getElementById(id);
+const input = $("fileInput"), drop = $("dropzone"), preview = $("preview");
+let selectedFile = null, previewUrl = null, busy = false;
 
-const input = document.getElementById("fileInput");
-const dropzone = document.getElementById("dropzone");
-const preview = document.getElementById("preview");
-const processBtn = document.getElementById("processBtn");
-const statusText = document.getElementById("status");
-const bar = document.getElementById("bar");
-const fileinfo = document.getElementById("fileinfo");
-
-let selectedFile = null;
-let previewUrl = null;
-let busy = false;
-
-function setStatus(message, progress) {
-  statusText.textContent = message;
-  if (progress !== undefined) {
-    bar.style.width = progress + "%";
-  }
+function setStatus(message, pct) {
+  $("status").textContent = message;
+  if (pct !== undefined) $("bar").style.width = pct + "%";
 }
-
+function humanSize(bytes) {
+  return bytes >= 1048576 ? (bytes/1048576).toFixed(1)+" MB" : Math.ceil(bytes/1024)+" KB";
+}
+function apiBase() {
+  if (!API_BASE || API_BASE.includes("YOUR-API-SERVICE")) {
+    throw new Error("Bạn chưa cấu hình API_BASE trong index.html. Hãy dán URL API đã deploy.");
+  }
+  return API_BASE.replace(/\/+$/, "");
+}
 function selectFile(file) {
   if (!file) return;
-
-  if (!file.type.startsWith("video/")) {
-    setStatus("Vui lòng chọn một file video hợp lệ.");
-    return;
+  if (!file.type.startsWith("video/") && !/\.(mp4|mov|mkv|webm|avi)$/i.test(file.name)) {
+    setStatus("Vui lòng chọn file video hợp lệ."); return;
   }
-
-  if (file.size > 500 * 1024 * 1024) {
-    setStatus("Video vượt quá giới hạn 500 MB.");
-    return;
+  if (file.size > 500*1024*1024) {
+    setStatus("Video vượt giới hạn 500 MB."); return;
   }
-
   selectedFile = file;
-
   if (previewUrl) URL.revokeObjectURL(previewUrl);
   previewUrl = URL.createObjectURL(file);
-
   preview.src = previewUrl;
   preview.style.display = "block";
-  fileinfo.style.display = "flex";
-
-  document.getElementById("filename").textContent = file.name;
-  document.getElementById("filesize").textContent =
-    (file.size / 1024 / 1024).toFixed(2) + " MB";
-
-  processBtn.disabled = false;
-  setStatus("Video đã sẵn sàng để nâng cấp.", 0);
+  $("fileinfo").style.display = "flex";
+  $("filename").textContent = file.name;
+  $("filesize").textContent = humanSize(file.size);
+  $("details").style.display = "grid";
+  $("originalSize").textContent = "Đang đọc...";
+  $("targetSize").textContent = "Tự nhận diện";
+  preview.onloadedmetadata = () => {
+    const w = preview.videoWidth, h = preview.videoHeight;
+    $("originalSize").textContent = `${w} × ${h}`;
+    $("targetSize").textContent = w > h ? "3840 × 2160 (ngang)" : h > w ? "2160 × 3840 (dọc)" : "2160 × 2160 (vuông)";
+  };
+  $("processBtn").disabled = false;
+  setStatus("Video đã sẵn sàng. Nhấn nút để xử lý.", 0);
 }
+$("chooseBtn").addEventListener("click", () => input.click());
+drop.addEventListener("click", e => { if (!e.target.closest("button")) input.click(); });
+input.addEventListener("change", () => selectFile(input.files[0]));
+drop.addEventListener("dragover", e => { e.preventDefault(); drop.classList.add("drag"); });
+drop.addEventListener("dragleave", () => drop.classList.remove("drag"));
+drop.addEventListener("drop", e => { e.preventDefault(); drop.classList.remove("drag"); selectFile(e.dataTransfer.files[0]); });
 
-document.getElementById("chooseBtn").onclick = () => input.click();
-dropzone.onclick = (e) => {
-  if (e.target.closest("button")) return;
-  input.click();
-};
-
-input.onchange = () => {
-  selectFile(input.files[0]);
-};
-
-dropzone.ondragover = (e) => {
-  e.preventDefault();
-  dropzone.classList.add("drag");
-};
-
-dropzone.ondragleave = () => {
-  dropzone.classList.remove("drag");
-};
-
-dropzone.ondrop = (e) => {
-  e.preventDefault();
-  dropzone.classList.remove("drag");
-  selectFile(e.dataTransfer.files[0]);
-};
-
-document.getElementById("removeBtn").onclick = () => {
+$("removeBtn").addEventListener("click", () => {
   if (busy) return;
-
-  selectedFile = null;
-  input.value = "";
-  preview.removeAttribute("src");
-  preview.load();
-  preview.style.display = "none";
-  fileinfo.style.display = "none";
-  processBtn.disabled = true;
-  setStatus("Sẵn sàng xử lý video của bạn", 0);
-
+  selectedFile = null; input.value = "";
+  preview.pause(); preview.removeAttribute("src"); preview.load(); preview.style.display = "none";
+  $("fileinfo").style.display = "none"; $("details").style.display = "none";
+  $("processBtn").disabled = true;
   if (previewUrl) URL.revokeObjectURL(previewUrl);
-  previewUrl = null;
-};
+  previewUrl = null; setStatus("Chọn video để bắt đầu.", 0);
+});
 
-processBtn.onclick = async () => {
-  if (!selectedFile || busy) return;
-
-  busy = true;
-  processBtn.disabled = true;
-  setStatus("Đang tải video lên máy chủ...", 10);
-
-  const formData = new FormData();
-  formData.append("file", selectedFile);
-
+async function fetchJson(url, options) {
+  let response;
   try {
-    setStatus("Đang xử lý video 4K. Vui lòng chờ...", 35);
-
-    const response = await fetch(API_URL, {
-      method: "POST",
-      body: formData
-    });
-
-    if (!response.ok) {
-      let message = "Không thể xử lý video.";
-      try {
-        const error = await response.json();
-        message = error.detail || message;
-      } catch {}
-      throw new Error(message);
-    }
-
-    setStatus("Đang nhận video kết quả...", 85);
-
-    const blob = await response.blob();
-    const downloadUrl = URL.createObjectURL(blob);
-
-    const a = document.createElement("a");
-    a.href = downloadUrl;
-    a.download = "video_4k.mp4";
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-
-    setStatus("Hoàn tất! Video 4K đã được tải xuống.", 100);
-
-    setTimeout(() => URL.revokeObjectURL(downloadUrl), 60000);
-  } catch (error) {
-    setStatus("Lỗi: " + error.message);
-  } finally {
-    busy = false;
-    processBtn.disabled = !selectedFile;
+    response = await fetch(url, options);
+  } catch (e) {
+    throw new Error("Không kết nối được API. Hãy kiểm tra URL API, trạng thái máy chủ, HTTPS và CORS.");
   }
-};
+  let data = {};
+  try { data = await response.json(); } catch {}
+  if (!response.ok) throw new Error(data.detail || `Máy chủ báo lỗi HTTP ${response.status}.`);
+  return data;
+}
+async function waitForJob(base, jobId) {
+  while (true) {
+    const data = await fetchJson(`${base}/api/jobs/${encodeURIComponent(jobId)}`);
+    setStatus(data.status || "Đang xử lý...", data.progress || 0);
+    if (data.input_width && data.input_height) {
+      $("originalSize").textContent = `${data.input_width} × ${data.input_height}`;
+      $("targetSize").textContent = `${data.output_width} × ${data.output_height} (${data.orientation})`;
+    }
+    if (data.state === "error") throw new Error(data.status || "Xử lý video thất bại.");
+    if (data.state === "completed") {
+      setStatus("Đang tải video kết quả...", 99);
+      let response;
+      try {
+        response = await fetch(`${base}/api/jobs/${encodeURIComponent(jobId)}/download`);
+      } catch {
+        throw new Error("Không tải được video. Kiểm tra kết nối API.");
+      }
+      if (!response.ok) throw new Error("Không tải được file kết quả từ máy chủ.");
+      const blob = await response.blob();
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url; a.download = data.output_name || "video_4k.mp4";
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 60000);
+      setStatus("Hoàn tất! Video đã được tải xuống.", 100);
+      return;
+    }
+    await new Promise(resolve => setTimeout(resolve, 1500));
+  }
+}
+$("processBtn").addEventListener("click", async () => {
+  if (!selectedFile || busy) return;
+  busy = true; $("processBtn").disabled = true;
+  try {
+    const base = apiBase();
+    setStatus("Đang tải video lên máy chủ...", 1);
+    const form = new FormData(); form.append("file", selectedFile);
+    const job = await fetchJson(`${base}/api/jobs`, {method:"POST", body:form});
+    await waitForJob(base, job.job_id);
+  } catch (err) {
+    setStatus("Lỗi: " + err.message);
+  } finally {
+    busy = false; $("processBtn").disabled = !selectedFile;
+  }
+});
 </script>
 </body>
 </html>
